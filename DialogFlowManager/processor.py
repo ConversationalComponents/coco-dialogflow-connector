@@ -3,14 +3,21 @@ import logging
 import json
 import os
 
+from .custom_exceptions import DialogFlowLoadComponentError
+
 COMPONENTS_FOLDER_NAME = "components"
 
 
-class DialogFlowLoadComponentError(Exception):
+def _build_service_account_config_path(component_id):
     """
-    Custom DialogFlow component exception.
+    Build service account json file full path.
+
+    Arguments:
+        component_id (string): Target DialogFlow component ID the name of
+        the DialogFlow service account file without the extension.
     """
-    pass
+    components_folder_name = os.path.join(os.path.dirname(os.path.abspath(__file__)), COMPONENTS_FOLDER_NAME)
+    return f"{components_folder_name}/{component_id}.json"
 
 
 def _load_service_account_config(component_id):
@@ -24,8 +31,8 @@ def _load_service_account_config(component_id):
     Returns:
         Dialog service account config file json content. (dict)
     """
-    components_folder_name = os.path.abspath(COMPONENTS_FOLDER_NAME)
-    config_file_path = f"{components_folder_name}/{component_id}.json"
+
+    config_file_path = _build_service_account_config_path(component_id)
 
     if not os.path.isfile(config_file_path):
         error_message = f"Component with ID: {component_id} does not exist."
@@ -47,8 +54,8 @@ def _create_session(component_id):
     Returns:
         DialogFlow Session Client. (DialogFlow Session Client)
     """
-    components_folder_name = os.path.abspath(COMPONENTS_FOLDER_NAME)
-    config_file_path = f"{components_folder_name}/{component_id}.json"
+    config_file_path = _build_service_account_config_path(component_id)
+
     return dialogflow.SessionsClient.from_service_account_json(
         config_file_path)
 
