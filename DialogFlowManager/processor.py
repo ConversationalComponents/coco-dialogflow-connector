@@ -15,6 +15,9 @@ def _build_service_account_config_path(component_id):
     Arguments:
         component_id (string): Target DialogFlow component ID the name of
         the DialogFlow service account file without the extension.
+
+    Returns:
+        Service account config file path. (string)
     """
     components_folder_name = os.path.join(os.path.dirname(os.path.abspath(__file__)), COMPONENTS_FOLDER_NAME)
     return f"{components_folder_name}/{component_id}.json"
