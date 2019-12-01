@@ -28,7 +28,7 @@ def handle_bad_http_request(err):
            400, {}
 
 # Endpoints.
-@app.route("/exchange/<component_id>/<session_id>", methods=["POST"])
+@app.route("/api/exchange/<component_id>/<session_id>", methods=["POST"])
 def exchange(component_id, session_id):
     request_json = request.get_json() or {}
 
@@ -42,14 +42,14 @@ def exchange(component_id, session_id):
 
     res_time_seconds = end_time - start_time
 
-    coco_standard_response = response_handler.handle(response,
+    coco_standard_response = response_handler.handle(component_id, response,
                                                      response_time_seconds=res_time_seconds)
 
     return jsonify(coco_standard_response), 200, {}
 
 
 if __name__ == "__main__":
-    app.run(port=3000)
+    app.run(host='127.0.0.1', port=8080, debug=True)
 
 
 

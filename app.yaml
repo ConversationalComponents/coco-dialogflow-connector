@@ -1,0 +1,3 @@
+service: coco-dialogflow-connector
+
+runtime: python37

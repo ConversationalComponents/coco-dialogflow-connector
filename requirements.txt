@@ -1,3 +1,4 @@
 dialogflow==0.7.2
+gunicorn==19.6.0
 flask==1.1.1
 
