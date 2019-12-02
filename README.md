@@ -38,7 +38,7 @@ CoCo dialog flow connector is a [Flask](http://flask.palletsprojects.com/en/1.1.
 
  #### 4. Place the key JSON at the following directory at the CoCo DialogFlow Connector source.
 
- ![Place component key in connector source directory.](/Screenshots/6PlaceFileInSourceCode.png)
+ ![Place component key in connector source directory.](/Screenshots/6PlaceFileInSourceCode2.png)
 
  #### 5. Map the 3 actions that were created at the config or just use the default action names.
 
