@@ -32,7 +32,7 @@ def handle_bad_http_request(err):
 def exchange(component_id, session_id):
     request_json = request.get_json() or {}
 
-    user_input = request_json.get("user_input")
+    user_input = request_json.get("user_input", " ")
 
     start_time = time.time()
     response = processor.process_request(component_id=component_id,

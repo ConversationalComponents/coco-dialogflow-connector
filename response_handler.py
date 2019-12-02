@@ -2,6 +2,10 @@ import copy
 
 from config import ACTIONS_MAPPING_CONFIG
 
+
+# Consts.
+DEFAULT_CONFIG_KEY = "default"
+
 COCO_STANDARD_RESPONSE = {
     "action_name": "",
     "component_done": False,  # Bool
@@ -14,6 +18,7 @@ COCO_STANDARD_RESPONSE = {
 }
 
 
+# functions
 def handle(component_id, dialogflow_response, response_time_seconds=0.0):
     """
     Receives a DialogFlow result object and formats it to a standard CoCo
@@ -30,7 +35,8 @@ def handle(component_id, dialogflow_response, response_time_seconds=0.0):
     Returns:
         Result in a CoCo standard format. (dict)
     """
-    mapping_config = ACTIONS_MAPPING_CONFIG[component_id]
+    mapping_config = ACTIONS_MAPPING_CONFIG.get(component_id) or \
+                     ACTIONS_MAPPING_CONFIG.get(DEFAULT_CONFIG_KEY)
 
     coco_standard_response = copy.deepcopy(COCO_STANDARD_RESPONSE)
     coco_standard_response["action_name"] = \
