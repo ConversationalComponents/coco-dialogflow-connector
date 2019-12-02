@@ -1,8 +1,8 @@
-#CoCo Dialogflow Connector
+# CoCo Dialogflow Connector
 
 CoCo dialog flow connector is a [Flask](http://flask.palletsprojects.com/en/1.1.x/ "Flask") application which allows you to expose your [Dialogflow](https://dialogflow.cloud.google.com/ "Dialw") bots as a components at the [CoCo marketplace](https://marketplace.conversationalcomponents.com/ "CoCo marketplace").
 
-###Deployment Flow:
+### Deployment Flow:
 
 1. Create a bot on Dialogflow.
 2. Create 3 actions at your conversation flow:
@@ -17,6 +17,6 @@ CoCo dialog flow connector is a [Flask](http://flask.palletsprojects.com/en/1.1.
 
 
 
-####1. Create a bot on Dialogflow. 
+#### 1. Create a bot on Dialogflow. 
 
 -
